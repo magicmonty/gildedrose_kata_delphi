@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{8FCD81E5-9AD7-41B8-807A-436BB8250A8F}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="GildedRose.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Test\GildedRoseConsoleTests.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="GildedRose">
+			<MSBuild Projects="GildedRose.dproj"/>
+		</Target>
+		<Target Name="GildedRose:Clean">
+			<MSBuild Targets="Clean" Projects="GildedRose.dproj"/>
+		</Target>
+		<Target Name="GildedRose:Make">
+			<MSBuild Targets="Make" Projects="GildedRose.dproj"/>
+		</Target>
+		<Target Name="GildedRoseConsoleTests">
+			<MSBuild Projects="Test\GildedRoseConsoleTests.dproj"/>
+		</Target>
+		<Target Name="GildedRoseConsoleTests:Clean">
+			<MSBuild Targets="Clean" Projects="Test\GildedRoseConsoleTests.dproj"/>
+		</Target>
+		<Target Name="GildedRoseConsoleTests:Make">
+			<MSBuild Targets="Make" Projects="Test\GildedRoseConsoleTests.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="GildedRose;GildedRoseConsoleTests"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="GildedRose:Clean;GildedRoseConsoleTests:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="GildedRose:Make;GildedRoseConsoleTests:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
