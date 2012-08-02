@@ -43,6 +43,7 @@
 			<DelphiCompile Include="GildedRose.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
+			<DCCReference Include="GildedRoseProgram.pas"/>
 			<BuildConfiguration Include="Basis">
 				<Key>Base</Key>
 			</BuildConfiguration>

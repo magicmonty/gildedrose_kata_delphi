@@ -1,2 +1,5 @@
 *.local
 __history
+*.exe
+*.dcu
+/Test/dunit.ini

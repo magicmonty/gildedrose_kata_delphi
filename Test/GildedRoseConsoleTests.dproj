@@ -46,6 +46,7 @@
 			<DelphiCompile Include="GildedRoseConsoleTests.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
+			<DCCReference Include="TestGildedRose.pas"/>
 			<BuildConfiguration Include="Basis">
 				<Key>Base</Key>
 			</BuildConfiguration>
