@@ -50,7 +50,10 @@
 			<DCCReference Include="XmlTestRunner.pas"/>
 			<DCCReference Include="ItemBehaviorBase.pas"/>
 			<DCCReference Include="..\GildedRoseProgram.pas"/>
-			<DCCReference Include="ItemTests.pas"/>
+			<DCCReference Include="SimpleItemTests.pas"/>
+			<DCCReference Include="MaturingItemTests.pas"/>
+			<DCCReference Include="ScalpingItemTests.pas"/>
+			<DCCReference Include="PristineItemTests.pas"/>
 			<DCCReference Include="XmlTestRunner.pa"/>
 			<DCCReference Include="XmlTestRunner.p"/>
 			<BuildConfiguration Include="Basis">

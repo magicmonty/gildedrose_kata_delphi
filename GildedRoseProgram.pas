@@ -38,6 +38,8 @@ type
     procedure UpdateQuality;
   end;
 
+const
+  MaxQuality = 50;
 
 
 implementation
@@ -77,7 +79,6 @@ begin
   Result := AItem.Name = 'Backstage passes to a TAFKAL80ETC concert';
 end;
 
-const MaxQuality = 50;
 procedure TProgram.UpdateQuality;
 var
   item: TItem;
@@ -96,7 +97,8 @@ end;
 
 procedure TProgram.UpdateItemQuality(item: TItem);
 begin
-  if ItemMaturesWithTime(item) or ItemIsScalping(item) then
+  if ItemMaturesWithTime(item)
+  or ItemIsScalping(item) then
   begin
     if (item.Quality < MaxQuality) then
     begin

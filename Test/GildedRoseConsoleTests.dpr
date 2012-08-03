@@ -11,7 +11,10 @@ uses
   XmlTestRunner in 'XmlTestRunner.pas',
   ItemBehaviorBase in 'ItemBehaviorBase.pas',
   GildedRoseProgram in '..\GildedRoseProgram.pas',
-  ItemTests in 'ItemTests.pas';
+  SimpleItemTests in 'SimpleItemTests.pas',
+  MaturingItemTests in 'MaturingItemTests.pas',
+  ScalpingItemTests in 'ScalpingItemTests.pas',
+  PristineItemTests in 'PristineItemTests.pas';
 
 {$R *.RES}
 
