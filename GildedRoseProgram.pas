@@ -22,6 +22,13 @@ type
   TProgram = class
   private
     FItems: TList<TItem>;
+
+    function ItemDegradesInQuality(AItem: TItem): Boolean;
+    function ItemMaturesWithTime(AItem: TItem): Boolean;
+    function ItemIsScalping(AItem: TItem): Boolean;
+    procedure UpdateItemQuality(item: TItem);
+    procedure UpdateSellIn(item: TItem);
+    procedure UpdateExpiredItemQuality(item: TItem);
   public
     property Items: TList<TItem> read FItems;
 
@@ -55,80 +62,86 @@ begin
   inherited;
 end;
 
+function TProgram.ItemDegradesInQuality(AItem: TItem): Boolean;
+begin
+  Result := AItem.Name <> 'Sulfuras, Hand of Ragnaros';
+end;
+
+function TProgram.ItemMaturesWithTime(AItem: TItem): Boolean;
+begin
+  Result := AItem.Name = 'Aged Brie';
+end;
+
+function TProgram.ItemIsScalping(AItem: TItem): Boolean;
+begin
+  Result := AItem.Name = 'Backstage passes to a TAFKAL80ETC concert';
+end;
+
+const MaxQuality = 50;
 procedure TProgram.UpdateQuality;
 var
-  i: Integer;
+  item: TItem;
 begin
-  for i := 0 to FItems.Count - 1 do
+  for item in FItems do
   begin
-    if (FItems[i].Name <> 'Aged Brie') and (FItems[i].Name <> 'Backstage passes to a TAFKAL80ETC concert') then
+    UpdateItemQuality(item);
+    UpdateSellIn(item);
+
+    if (item.SellIn >= 0) then
+      continue;
+
+    UpdateExpiredItemQuality(item);
+  end;
+end;
+
+procedure TProgram.UpdateItemQuality(item: TItem);
+begin
+  if ItemMaturesWithTime(item) or ItemIsScalping(item) then
+  begin
+    if (item.Quality < MaxQuality) then
     begin
-      if (FItems[i].Quality > 0) then
+      item.Quality := item.Quality + 1;
+      if ItemIsScalping(item) then
       begin
-        if (FItems[i].Name <> 'Sulfuras, Hand of Ragnaros') then
-        begin
-          FItems[i].Quality := FItems[i].Quality - 1;
-        end;
+        if (item.SellIn < 11) and (item.Quality < MaxQuality) then
+          item.Quality := item.Quality + 1;
+        if (item.SellIn < 6) and (item.Quality < MaxQuality) then
+          item.Quality := item.Quality + 1;
       end;
-    end
+    end;
+  end
+  else
+  begin
+    if (item.Quality > 0) and ItemDegradesInQuality(item) then
+      item.Quality := item.Quality - 1;
+  end;
+end;
+
+procedure TProgram.UpdateSellIn(item: TItem);
+begin
+  if ItemDegradesInQuality(item) then
+  begin
+    item.SellIn := item.SellIn - 1;
+  end;
+end;
+
+procedure TProgram.UpdateExpiredItemQuality(item: TItem);
+begin
+  if ItemMaturesWithTime(item) then
+  begin
+    if (item.Quality < MaxQuality) then
+    begin
+      item.Quality := item.Quality + 1;
+    end;
+  end
+  else
+  begin
+    if ItemIsScalping(item) then
+      item.Quality := item.Quality - item.Quality
     else
     begin
-      if (FItems[i].Quality < 50) then
-      begin
-        FItems[i].Quality := FItems[i].Quality + 1;
-
-        if (FItems[i].Name = 'Backstage passes to a TAFKAL80ETC concert') then
-        begin
-          if (FItems[i].SellIn < 11) then
-          begin
-            if (FItems[i].Quality < 50) then
-            begin
-              FItems[i].Quality := FItems[i].Quality + 1;
-            end;
-          end;
-
-          if (FItems[i].SellIn < 6) then
-          begin
-            if (FItems[i].Quality < 50) then
-            begin
-              FItems[i].Quality := FItems[i].Quality + 1;
-            end;
-          end;
-        end;
-      end;
-    end;
-
-    if (FItems[i].Name <> 'Sulfuras, Hand of Ragnaros') then
-    begin
-      FItems[i].SellIn := FItems[i].SellIn - 1;
-    end;
-
-    if (FItems[i].SellIn < 0) then
-    begin
-      if (FItems[i].Name <> 'Aged Brie') then
-      begin
-        if (FItems[i].Name <> 'Backstage passes to a TAFKAL80ETC concert') then
-        begin
-          if (FItems[i].Quality > 0) then
-          begin
-            if (FItems[i].Name <> 'Sulfuras, Hand of Ragnaros') then
-            begin
-              FItems[i].Quality := FItems[i].Quality - 1;
-            end;
-          end;
-        end
-        else
-        begin
-          FItems[i].Quality := FItems[i].Quality - FItems[i].Quality;
-        end;
-      end
-      else
-      begin
-        if (FItems[i].Quality < 50) then
-        begin
-          FItems[i].Quality := FItems[i].Quality + 1;
-        end;
-      end;
+      if (item.Quality > 0) and ItemDegradesInQuality(item) then
+        item.Quality := item.Quality - 1;
     end;
   end;
 end;

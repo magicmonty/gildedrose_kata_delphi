@@ -7,21 +7,19 @@ program GildedRoseConsoleTests;
 uses
   Forms,
   TestFramework,
-  {$IFNDEF CONSOLE_TESTRUNNER}
   GUITestRunner,
-  {$ELSE}
   XmlTestRunner in 'XmlTestRunner.pas',
-  {$ENDIF}
-  TestGildedRose in 'TestGildedRose.pas';
+  ItemBehaviorBase in 'ItemBehaviorBase.pas',
+  GildedRoseProgram in '..\GildedRoseProgram.pas',
+  ItemTests in 'ItemTests.pas';
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  {$IFDEF CONSOLE_TESTRUNNER}
-  XmlTestRunner.RunTestsAndClose;
-  {$ELSE}
-  GUITestRunner.RunRegisteredTests;
-  {$ENDIF}
+  if IsConsole then
+    XmlTestRunner.RunTestsAndClose
+  else
+    GUITestRunner.RunRegisteredTests;
 end.
 
