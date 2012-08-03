@@ -1,0 +1,3 @@
+*.exe
+dunit-report.xml
+dunit.ini

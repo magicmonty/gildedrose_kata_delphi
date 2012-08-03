@@ -8,15 +8,15 @@ uses
   Forms,
   TestFramework,
   GUITestRunner,
-  TextTestRunner,
-  TestGildedRose in 'TestGildedRose.pas';
+  TestGildedRose in 'TestGildedRose.pas',
+  XmlTestRunner in 'XmlTestRunner.pas';
 
 {$R *.RES}
 
 begin
   Application.Initialize;
   if IsConsole then
-    TextTestRunner.RunRegisteredTests
+    XmlTestRunner.RunTestsAndClose
   else
     GUITestRunner.RunRegisteredTests;
 end.
