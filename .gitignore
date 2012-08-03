@@ -3,3 +3,4 @@ __history
 *.exe
 *.dcu
 /Test/dunit.ini
+*.identcache
