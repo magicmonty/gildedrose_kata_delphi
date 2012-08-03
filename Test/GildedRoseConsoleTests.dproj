@@ -2,7 +2,7 @@
 		<PropertyGroup>
 			<ProjectGuid>{0D7EFB64-3092-42EA-B2E9-8470FBD4FDC9}</ProjectGuid>
 			<ProjectVersion>12.0</ProjectVersion>
-			<Config Condition="'$(Config)'==''">Release</Config>
+			<Config Condition="'$(Config)'==''">Debug</Config>
 			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
 			<MainSource>GildedRoseConsoleTests.dpr</MainSource>
 		</PropertyGroup>
@@ -20,22 +20,20 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ExeOutput>..\bin</DCC_ExeOutput>
 			<DCC_N>false</DCC_N>
 			<DCC_S>false</DCC_S>
-			<DCC_DcuOutput>.</DCC_DcuOutput>
+			<DCC_DcuOutput>..\dcu</DCC_DcuOutput>
 			<DCC_E>false</DCC_E>
 			<DCC_F>false</DCC_F>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
 			<DCC_K>false</DCC_K>
 			<DCC_Platform>x86</DCC_Platform>
-			<DCC_DependencyCheckOutputName>GildedRoseConsoleTests.exe</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>..\bin\GildedRoseConsoleTests.exe</DCC_DependencyCheckOutputName>
 			<DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
-			<DCC_ExeOutput>..\bin</DCC_ExeOutput>
-			<DCC_DcuOutput>..\dcu</DCC_DcuOutput>
-			<DCC_DependencyCheckOutputName>..\bin\GildedRoseConsoleTests.exe</DCC_DependencyCheckOutputName>
 			<BRCC_Defines>CONSOLE_TESTRUNNER;$(BRCC_Defines)</BRCC_Defines>
 			<DCC_DebugInformation>false</DCC_DebugInformation>
 			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -50,7 +48,6 @@
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
 			<DCCReference Include="TestGildedRose.pas"/>
-			<DCCReference Include="XmlTestRunner.pas"/>
 			<BuildConfiguration Include="Basis">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -64,6 +61,10 @@
 			</BuildConfiguration>
 		</ItemGroup>
 		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PreBuildEvent><![CDATA[del /f /q $(PROJECTDIR)\..\dcu\*TestRunner.dcu && del /f /q $(OUTPUTPATH)]]></PreBuildEvent>
+			<PreBuildEventIgnoreExitCode>true</PreBuildEventIgnoreExitCode>
+		</PropertyGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
 			<Borland.ProjectType/>
