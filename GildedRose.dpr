@@ -4,7 +4,15 @@ program GildedRose;
 
 uses
   SysUtils,
-  GildedRoseProgram in 'GildedRoseProgram.pas';
+  uItem,
+  GildedRoseProgram in 'GildedRoseProgram.pas',
+  uMaturingItem in 'uMaturingItem.pas',
+  uPristineItem in 'uPristineItem.pas',
+  uRetailItem in 'uRetailItem.pas',
+  uRetailItemFactory in 'uRetailItemFactory.pas',
+  uScalpingItem in 'uScalpingItem.pas',
+  uSimpleItem in 'uSimpleItem.pas',
+  uConjuredItem in 'uConjuredItem.pas';
 
 var
   app: TProgram;

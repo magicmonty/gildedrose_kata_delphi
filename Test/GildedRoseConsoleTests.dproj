@@ -47,7 +47,24 @@
 			<DelphiCompile Include="GildedRoseConsoleTests.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
-			<DCCReference Include="TestGildedRose.pas"/>
+			<DCCReference Include="XmlTestRunner.pas"/>
+			<DCCReference Include="ItemBehaviorBase.pas"/>
+			<DCCReference Include="..\GildedRoseProgram.pas"/>
+			<DCCReference Include="SimpleItemTests.pas"/>
+			<DCCReference Include="MaturingItemTests.pas"/>
+			<DCCReference Include="ScalpingItemTests.pas"/>
+			<DCCReference Include="PristineItemTests.pas"/>
+			<DCCReference Include="..\uRetailItem.pas"/>
+			<DCCReference Include="..\uItem.pas"/>
+			<DCCReference Include="..\uRetailItemFactory.pas"/>
+			<DCCReference Include="..\uMaturingItem.pas"/>
+			<DCCReference Include="..\uSimpleItem.pas"/>
+			<DCCReference Include="..\uScalpingItem.pas"/>
+			<DCCReference Include="..\uPristineItem.pas"/>
+			<DCCReference Include="ConjuredItemTests.pas"/>
+			<DCCReference Include="..\uConjuredItem.pas"/>
+			<DCCReference Include="XmlTestRunner.pa"/>
+			<DCCReference Include="XmlTestRunner.p"/>
 			<BuildConfiguration Include="Basis">
 				<Key>Base</Key>
 			</BuildConfiguration>
