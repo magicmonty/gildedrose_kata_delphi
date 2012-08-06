@@ -52,6 +52,7 @@
 			<DCCReference Include="uRetailItemFactory.pas"/>
 			<DCCReference Include="uScalpingItem.pas"/>
 			<DCCReference Include="uSimpleItem.pas"/>
+			<DCCReference Include="uConjuredItem.pas"/>
 			<BuildConfiguration Include="Basis">
 				<Key>Base</Key>
 			</BuildConfiguration>

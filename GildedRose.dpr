@@ -11,7 +11,8 @@ uses
   uRetailItem in 'uRetailItem.pas',
   uRetailItemFactory in 'uRetailItemFactory.pas',
   uScalpingItem in 'uScalpingItem.pas',
-  uSimpleItem in 'uSimpleItem.pas';
+  uSimpleItem in 'uSimpleItem.pas',
+  uConjuredItem in 'uConjuredItem.pas';
 
 var
   app: TProgram;

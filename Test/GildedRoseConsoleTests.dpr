@@ -21,7 +21,9 @@ uses
   uMaturingItem in '..\uMaturingItem.pas',
   uSimpleItem in '..\uSimpleItem.pas',
   uScalpingItem in '..\uScalpingItem.pas',
-  uPristineItem in '..\uPristineItem.pas';
+  uPristineItem in '..\uPristineItem.pas',
+  ConjuredItemTests in 'ConjuredItemTests.pas',
+  uConjuredItem in '..\uConjuredItem.pas';
 
 {$R *.RES}
 

@@ -25,7 +25,7 @@ implementation
 procedure TSimpleItemTests.ASimpleItemShouldDegradeInQuality;
 begin
   SetupItem(TTestItems.SimpleItem);
-  CheckEquals(0, FItem.Quality);
+  CheckEquals(DEFAULT_TEST_QUALITY - 1, FItem.Quality);
 end;
 
 procedure TSimpleItemTests.ASimpleItemShouldNotDegradeInQualityBelow0;
@@ -41,7 +41,7 @@ end;
 procedure TSimpleItemTests.ASimpleItemShouldDecreaseSellIn;
 begin
   SetupItem(TTestItems.SimpleItem);
-  CheckEquals(0, FItem.SellIn);
+  CheckEquals(DEFAULT_TEST_SELL_IN - 1, FItem.SellIn);
 end;
 
 procedure TSimpleItemTests.ASimpleItemShouldFurtherDecreaseSellInIf0;
@@ -72,10 +72,9 @@ var
 begin
   item := TTestItems.SimpleItem;
   item.SellIn := -1;
-  item.Quality := 4;
 
   SetupItem(item);
-  CheckEquals(2, FItem.Quality);
+  CheckEquals(DEFAULT_TEST_QUALITY - 2, FItem.Quality);
 end;
 
 procedure TSimpleItemTests.AnExpiredSimpleItemShouldNotDegradeInQualityBelow0;

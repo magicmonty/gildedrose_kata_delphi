@@ -61,6 +61,8 @@
 			<DCCReference Include="..\uSimpleItem.pas"/>
 			<DCCReference Include="..\uScalpingItem.pas"/>
 			<DCCReference Include="..\uPristineItem.pas"/>
+			<DCCReference Include="ConjuredItemTests.pas"/>
+			<DCCReference Include="..\uConjuredItem.pas"/>
 			<DCCReference Include="XmlTestRunner.pa"/>
 			<DCCReference Include="XmlTestRunner.p"/>
 			<BuildConfiguration Include="Basis">

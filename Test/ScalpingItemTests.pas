@@ -34,7 +34,7 @@ begin
   item.SellIn := 20;
 
   SetupItem(item);
-  CheckEquals(2, FItem.Quality);
+  CheckEquals(DEFAULT_TEST_QUALITY + 1, FItem.Quality);
 end;
 
 procedure TScalpingItemTests.AScalpingItemShouldNeverIncreaseInQualityAboveMaxQuality;
@@ -42,9 +42,9 @@ var
   item: TItem;
 begin
   item := TTestItems.ScalpingItem;
-  item.Quality := uRetailItem.MaxQuality;
+  item.Quality := MaxQuality;
   SetupItem(item);
-  CheckEquals(uRetailItem.MaxQuality, FItem.Quality);
+  CheckEquals(MaxQuality, FItem.Quality);
 end;
 
 procedure TScalpingItemTests.AScalpingItemShouldDoubleIncreaseQualityIfSellInLessThan11;
@@ -55,7 +55,7 @@ begin
   item.SellIn := 10;
 
   SetupItem(item);
-  CheckEquals(3, FItem.Quality);
+  CheckEquals(DEFAULT_TEST_QUALITY + 2, FItem.Quality);
 end;
 
 procedure TScalpingItemTests.AScalpingItemShouldTripleIncreaseQualityIfSellInLessThan6;
@@ -66,7 +66,7 @@ begin
   item.SellIn := 5;
 
   SetupItem(item);
-  CheckEquals(4, FItem.Quality);
+  CheckEquals(DEFAULT_TEST_QUALITY + 3, FItem.Quality);
 end;
 
 procedure TScalpingItemTests.AScalpingItemShouldDecreaseSellIn;
@@ -74,10 +74,9 @@ var
   item: TItem;
 begin
   item := TTestItems.ScalpingItem;
-  item.SellIn := 0;
 
   SetupItem(item);
-  CheckEquals(-1, FItem.SellIn);
+  CheckEquals(DEFAULT_TEST_SELL_IN - 1, FItem.SellIn);
 end;
 
 procedure TScalpingItemTests.AScalpingItemShouldFurtherDecreaseSellInIf0;
@@ -97,7 +96,6 @@ var
 begin
   item := TTestItems.ScalpingItem;
   item.SellIn := 0;
-  item.Quality := 20;
 
   SetupItem(item);
   CheckEquals(0, FItem.Quality);

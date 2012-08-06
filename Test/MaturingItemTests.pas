@@ -27,7 +27,7 @@ uses
 procedure TMaturingItemTests.AMaturingItemShouldIncreaseInQuality;
 begin
   SetupItem(TTestItems.MaturingItem);
-  CheckEquals(2, FItem.Quality);
+  CheckEquals(DEFAULT_TEST_QUALITY + 1, FItem.Quality);
 end;
 
 procedure TMaturingItemTests.AMaturingItemShouldNeverIncreaseInQualityAboveMaxQuality;
@@ -45,10 +45,9 @@ var
   item: TItem;
 begin
   item := TTestItems.MaturingItem;
-  item.SellIn := 0;
 
   SetupItem(item);
-  CheckEquals(-1, FItem.SellIn);
+  CheckEquals(DEFAULT_TEST_SELL_IN - 1, FItem.SellIn);
 end;
 
 procedure TMaturingItemTests.AMaturingItemShouldFurtherDecreaseSellInIf0;
@@ -70,7 +69,7 @@ begin
   item.SellIn := -1;
 
   SetupItem(item);
-  CheckEquals(3, FItem.Quality);
+  CheckEquals(DEFAULT_TEST_QUALITY + 2, FItem.Quality);
 end;
 
 procedure TMaturingItemTests.AnExpiredMaturingItemShouldNotIncreaseInQualityAboveMaxQuality;
@@ -79,10 +78,10 @@ var
 begin
   item := TTestItems.MaturingItem;
   item.SellIn := -1;
-  item.Quality := 49;
+  item.Quality := MaxQuality - 1;
 
   SetupItem(item);
-  CheckEquals(50, FItem.Quality);
+  CheckEquals(MaxQuality, FItem.Quality);
 end;
 
 initialization
