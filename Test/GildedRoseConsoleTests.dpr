@@ -14,7 +14,14 @@ uses
   SimpleItemTests in 'SimpleItemTests.pas',
   MaturingItemTests in 'MaturingItemTests.pas',
   ScalpingItemTests in 'ScalpingItemTests.pas',
-  PristineItemTests in 'PristineItemTests.pas';
+  PristineItemTests in 'PristineItemTests.pas',
+  uRetailItem in '..\uRetailItem.pas',
+  uItem in '..\uItem.pas',
+  uRetailItemFactory in '..\uRetailItemFactory.pas',
+  uMaturingItem in '..\uMaturingItem.pas',
+  uSimpleItem in '..\uSimpleItem.pas',
+  uScalpingItem in '..\uScalpingItem.pas',
+  uPristineItem in '..\uPristineItem.pas';
 
 {$R *.RES}
 

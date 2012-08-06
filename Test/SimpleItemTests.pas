@@ -5,6 +5,7 @@ interface
 uses
   TestFramework,
   GildedRoseProgram,
+  uItem,
   ItemBehaviorBase;
 
 type

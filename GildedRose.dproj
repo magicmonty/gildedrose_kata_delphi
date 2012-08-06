@@ -46,6 +46,12 @@
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
 			<DCCReference Include="GildedRoseProgram.pas"/>
+			<DCCReference Include="uMaturingItem.pas"/>
+			<DCCReference Include="uPristineItem.pas"/>
+			<DCCReference Include="uRetailItem.pas"/>
+			<DCCReference Include="uRetailItemFactory.pas"/>
+			<DCCReference Include="uScalpingItem.pas"/>
+			<DCCReference Include="uSimpleItem.pas"/>
 			<BuildConfiguration Include="Basis">
 				<Key>Base</Key>
 			</BuildConfiguration>

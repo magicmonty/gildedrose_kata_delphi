@@ -4,6 +4,7 @@ interface
 
 uses
   GildedRoseProgram,
+  uItem,
   TestFramework;
 
 type

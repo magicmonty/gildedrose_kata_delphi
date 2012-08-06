@@ -5,6 +5,7 @@ interface
 uses
   TestFramework,
   GildedRoseProgram,
+  uItem,
   ItemBehaviorBase;
 
 type
@@ -22,7 +23,8 @@ type
 
 implementation
 
-{ TScalpingItemTests }
+uses
+  uRetailItem;
 
 procedure TScalpingItemTests.AScalpingItemShouldIncreaseInQuality;
 var
@@ -40,9 +42,9 @@ var
   item: TItem;
 begin
   item := TTestItems.ScalpingItem;
-  item.Quality := GildedRoseProgram.MaxQuality;
+  item.Quality := uRetailItem.MaxQuality;
   SetupItem(item);
-  CheckEquals(GildedRoseProgram.MaxQuality, FItem.Quality);
+  CheckEquals(uRetailItem.MaxQuality, FItem.Quality);
 end;
 
 procedure TScalpingItemTests.AScalpingItemShouldDoubleIncreaseQualityIfSellInLessThan11;

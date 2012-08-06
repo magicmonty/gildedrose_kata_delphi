@@ -5,6 +5,7 @@ interface
 uses
   TestFramework,
   GildedRoseProgram,
+  uItem,
   ItemBehaviorBase;
 
 type
@@ -20,7 +21,8 @@ type
 
 implementation
 
-{ TMaturingItemTests }
+uses
+  uRetailItem;
 
 procedure TMaturingItemTests.AMaturingItemShouldIncreaseInQuality;
 begin
@@ -33,9 +35,9 @@ var
   item: TItem;
 begin
   item := TTestItems.MaturingItem;
-  item.Quality := GildedRoseProgram.MaxQuality;
+  item.Quality := uRetailItem.MaxQuality;
   SetupItem(item);
-  CheckEquals(GildedRoseProgram.MaxQuality, FItem.Quality);
+  CheckEquals(uRetailItem.MaxQuality, FItem.Quality);
 end;
 
 procedure TMaturingItemTests.AMaturingItemShouldDecreaseSellIn;
